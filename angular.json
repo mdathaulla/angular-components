@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "projects": {
+    "authetication-ngrx": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/authetication-ngrx",
+      "sourceRoot": "apps/authetication-ngrx/src",
+      "prefix": "angular-components",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/authetication-ngrx",
+            "index": "apps/authetication-ngrx/src/index.html",
+            "main": "apps/authetication-ngrx/src/main.ts",
+            "polyfills": "apps/authetication-ngrx/src/polyfills.ts",
+            "tsConfig": "apps/authetication-ngrx/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/authetication-ngrx/src/favicon.ico",
+              "apps/authetication-ngrx/src/assets"
+            ],
+            "styles": ["apps/authetication-ngrx/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/authetication-ngrx/src/environments/environment.ts",
+                  "with": "apps/authetication-ngrx/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "authetication-ngrx:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "authetication-ngrx:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "authetication-ngrx:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/authetication-ngrx/tsconfig.app.json",
+              "apps/authetication-ngrx/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/authetication-ngrx/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/authetication-ngrx/jest.config.js",
+            "tsConfig": "apps/authetication-ngrx/tsconfig.spec.json",
+            "setupFile": "apps/authetication-ngrx/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "authetication-ngrx-e2e": {
+      "root": "apps/authetication-ngrx-e2e",
+      "sourceRoot": "apps/authetication-ngrx-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/authetication-ngrx-e2e/cypress.json",
+            "tsConfig": "apps/authetication-ngrx-e2e/tsconfig.e2e.json",
+            "devServerTarget": "authetication-ngrx:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "authetication-ngrx:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/authetication-ngrx-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/authetication-ngrx-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "authetication-ngrx"
+}
