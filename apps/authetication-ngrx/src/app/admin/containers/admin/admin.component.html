@@ -1,0 +1,6 @@
+<div class="admin-container">
+  <div class="card" *ngIf="(user$ | async) as user">
+    <h1>{{ user?.name }}</h1>
+    <p class="title">{{ user?.username }}</p>
+  </div>
+</div>

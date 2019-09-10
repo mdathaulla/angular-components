@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentication reducer should clean user and token if logout success 1`] = `
+Object {
+  "loaded": false,
+  "loading": false,
+  "token": null,
+  "user": null,
+}
+`;
+
+exports[`Authentication reducer should load user and token if exist in local 1`] = `
+Object {
+  "loaded": true,
+  "loading": false,
+  "token": "agf11231asd",
+  "user": Object {
+    "id": "1",
+    "name": "Pedro Benjamin Lescano Pasquet",
+    "username": "plescanopasquet",
+  },
+}
+`;
+
+exports[`Authentication reducer should load user and token when api is successfull login 1`] = `
+Object {
+  "loaded": true,
+  "loading": false,
+  "token": "agf11231asd",
+  "user": Object {
+    "id": "1",
+    "name": "Pedro Benjamin Lescano Pasquet",
+    "username": "plescanopasquet",
+  },
+}
+`;

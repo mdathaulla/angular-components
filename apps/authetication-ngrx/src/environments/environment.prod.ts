@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  BUGSNAG_KEY: "",
+  API_URI: "localhost:4000"
 };

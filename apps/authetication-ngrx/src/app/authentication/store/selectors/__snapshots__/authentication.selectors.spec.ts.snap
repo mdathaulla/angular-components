@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Authentication Selectors selectAuthenticationLoaded should return false if user is logging in 1`] = `false`;
+
+exports[`Authentication Selectors selectAuthenticationLoaded should return true if user is login in 1`] = `true`;
+
+exports[`Authentication Selectors selectAuthenticationLoading should return false if user is logged in 1`] = `false`;
+
+exports[`Authentication Selectors selectAuthenticationLoading should return true if user is login in 1`] = `true`;
+
+exports[`Authentication Selectors selectAuthenticationLoading should return true if user is loging in 1`] = `true`;
+
+exports[`Authentication Selectors selectAuthenticationToken should return null if user is not logged in 1`] = `null`;
+
+exports[`Authentication Selectors selectAuthenticationToken should return token if user is logged in 1`] = `"agf11231asd"`;
+
+exports[`Authentication Selectors selectAuthenticationUser should return null if user is not logged in 1`] = `null`;
+
+exports[`Authentication Selectors selectAuthenticationUser should return user model if user is logged in 1`] = `
+Object {
+  "id": "1",
+  "name": "Pedro Benjamin Lescano Pasquet",
+  "username": "plescanopasquet",
+}
+`;
+
+exports[`Authentication Selectors selectUserIsLoggedIn should return false if user is not logged in 1`] = `false`;
+
+exports[`Authentication Selectors selectUserIsLoggedIn should return true if user is logged in 1`] = `true`;

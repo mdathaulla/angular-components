@@ -1,84 +1,89 @@
-# AngularComponents
+# Angular Authentication + NgRx 8
 
-This project was generated using [Nx](https://nx.dev).
+I'm was developing a web app and thought will be helpful to share some code for this frequently asked task that is authentication.
+I used Brandon Roberts member of the NgRx team talk on Ng-Conf 2018 about authentication as a guide here is the link to the talk https://www.youtube.com/watch?v=46IRQgNtCGw
 
-<p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
+##Architecture
 
-🔎 **Nx is a set of Extensible Dev Tools for Monorepos.**
+###Key Requirements
 
-## Quick Start & Documentation
+- Login with email and password
+- Credentials must be enter once and remember by the app
 
-[Nx Documentation](https://nx.dev/angular)
+###App Features
+####Login
 
-[10-minute video showing all Nx features](https://nx.dev/angular/getting-started/what-is-nx)
+- Email and password authentication
+- Json Web Tokens attached by Http Interceptor
+  ###Domain Rules
+- User must be logged in to enter home page
+  ###Logging
+- Bugsnag service for production
+  ###Services / Communication
+- Restful services with nodejs ( For demostration purposes will simulate http request with Authentication Service uncoment code to test localy in authentication/services/authentication.service.ts)
+- Authentication Service (Angular Service)
+- Authentication Guard (Angular Service)
+- Http Interceptor will attached token to header
+  ###Data Models
 
-[Interactive Tutorial](https://nx.dev/angular/tutorial/01-create-application)
+#### User
 
-## Adding capabilities to your workspace
+```
+interface User {
+id: string | number;
+name: string;
+email: string;
+}
+```
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+####LoginData
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+```
+interface LoginData {
+username: string;
+password: string;
+}
+```
 
-Below are some plugins which you can add to your workspace:
+#### AuthenticationData
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+```
+interface AuthenticationData {
+token: string;
+user: User;
+}
+```
 
-## Generate an application
+###Components
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+- Feature Component
+   LoginComponent
+- Presentational 
+  LoginFormComponent
+  Layout
 
-> You can use any of the plugins above to generate applications as well.
+### Shared Functionality
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+- Toastr
+- Layout
+  Angular Flex
+- State Management
+   NgRx
 
-## Generate a library
+###Set Up Environment
+- Install NodeJs 12.8.1 https://nodejs.org/en/
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+- Install Visual Studio Code https://code.visualstudio.com/
 
-> You can also use any of the plugins above to generate libraries as well.
+- Install Angular cli
 
-Libraries are sharable across libraries and applications. They can be imported from `@angular-components/mylib`.
+- Download Repo https://github.com/BePasquet/angular-components
 
-## Development server
+- Install dependencies
+```npm i```
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+- Run dev environment
+```ng serve```
+- Test
+```ng test```
 
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
